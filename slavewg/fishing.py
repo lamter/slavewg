@@ -134,14 +134,15 @@ class Fishing(BaseOperation):
 
         x_list, y_list = self.getXY()
 
-        self.keyboard.press_key(self.keyboard.shift_key)
+        # self.keyboard.press_key(self.keyboard.shift_key)
         for x in x_list:
             for y in y_list:
                 stoped.wait(0.2)
                 self.mouse.click(x, y, 2, 1)
-        self.keyboard.release_key(self.keyboard.shift_key)
+        # self.keyboard.release_key(self.keyboard.shift_key)
         # time.sleep(0.5)
         # self.keyboard.tap_key(self.keyboard.escape_key)
+
 
         # 已经起勾，重新开始
         Timer(1, lambda: self.queue.put(self.do)).start()
@@ -155,13 +156,22 @@ class Fishing(BaseOperation):
         #     self.hooks()
         #     return
 
+        # 销毁物品
+        self.keyboard.tap_key(']')
+        time.sleep(0.5)
+
+        # 用宏打开贝壳
+        self.keyboard.tap_key('0')
+
+        time.sleep(1)
+
         # 抛竿
         self.log.warning('抛竿')
         self.keyboard.tap_key(self.CASTING_KEY)
 
         # 录音点
         # recordMoments = list(range(14, 29, 2))
-        recordMoments = list(range(2, 29, 2))
+        recordMoments = list(range(3, 29, 2))
         startTime = time.time()
 
         def moments():
