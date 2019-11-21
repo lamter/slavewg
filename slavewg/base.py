@@ -4,8 +4,10 @@ import os
 import json
 import time
 import platform
-from pymouse.mac import PyMouse
-from pykeyboard.mac import PyKeyboard
+# from pymouse.mac import PyMouse
+# from pykeyboard.mac import PyKeyboard
+from pymouse import PyMouse
+from pykeyboard import PyKeyboard
 from threading import Timer, Lock
 from queue import Queue
 
@@ -13,7 +15,6 @@ pos_file = os.path.join(os.path.split(__file__)[0], 'position.json')
 
 with open(pos_file, 'r', encoding='utf8') as f:
     position = json.load(f)
-
 
 
 # class Mouse(PyMouse):
